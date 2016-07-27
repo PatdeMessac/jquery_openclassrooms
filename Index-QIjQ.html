@@ -8,9 +8,10 @@
   </head>
   
   <body>
-    <form>
+      <div class="test" style="position : fixed; background-color : white; margin-top : 0;">
     <a href="">Tester les réponses</a>
-
+    </div>
+    <form>
     <div class="question">
       <div class="texte">
         <h2>Question 1</h2>
@@ -56,7 +57,7 @@
         
         // Mise en forme des div du QCM
         var q = $('.question');
-        q.css('background', '#9EEAE0');
+        q.css('background', 'grey');
         q.css('border-style', 'groove');
         q.css('border-width', '4px');
         q.css('width', '900px');
@@ -66,15 +67,17 @@
         $('.texte').css('float', 'left');
         $('.texte').css('width', '90%');
         $('img').css('float', 'right');
-        $('img').css('margin-top', '80px');
+        $('img').css('margin-top', '1px');
         
         // Action au survol du lien « Tester les réponses »
         $('a').hover(
           function() { 
-            $('.reponse').show();
+            
             if ($(':radio[id="r1"]:checked').val()) {
-              $('#img1').attr('src', 'bon.png'); 
-              $('#reponse1').css('color', 'green');
+                  $('#img1').attr('src', 'bon.png'); 
+                  $('#reponse1').css('color', 'green');
+                  $('#reponse1').show();
+                  $('#test').css('font-weight', 'bolder');
             }  
             else {
               $('#img1').attr('src', 'mauvais.png');
@@ -83,28 +86,30 @@
             if ($(':radio[id="r4"]:checked').val()) {
               $('#img2').attr('src', 'bon.png');
               $('#reponse2').css('color', 'green');
+              $('#reponse2').show();
             }
             else {
               $('#img2').attr('src', 'mauvais.png');
               $('#reponse2').css('color', 'red');
+              $('#reponse2').hide();
             } 
             if ($(':radio[id="r8"]:checked').val()) {
               $('#img3').attr('src', 'bon.png'); 
               $('#reponse3').css('color', 'green');
+            $('#reponse3').show();
             }
             else {
               $('#img3').attr('src', 'mauvais.png');
               $('#reponse3').css('color', 'red');
-            }
+            $('#reponse3').hide();}
           },
+
           function() { 
             $('.reponse').hide(); 
             $('img').each(function() {
               $(this).attr('src', 'question.png');
-          });
-}
-
-        );  
+            });
+            });  
       }); 
     </script>    
   </body>
